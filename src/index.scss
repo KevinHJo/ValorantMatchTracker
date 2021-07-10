@@ -1,0 +1,23 @@
+body {
+    background-color: darkgrey;
+}
+
+footer {
+    background-color: white;
+    height: 60px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.dev-nav {
+    display: flex;
+    height: 30px;
+    justify-content: center;
+    vertical-align: middle;
+    padding: 5px;
+}
+
+img {
+    padding: 10px;
+    vertical-align: middle;
+}
