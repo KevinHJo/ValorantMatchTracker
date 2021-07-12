@@ -1,6 +1,10 @@
 # Welcome to Valorant Match Tracker!
 
-This is a project created for the javascript_project portion of the App Academy Curriculum. However, it's been created with the intent of one day expanding it into a full application. It's been made by an actual Valorant player (Act 2 - present: Immortal) with the insight of somebody who knows what information is useful for those who wish to improve at the game.
+## Background
+
+Becoming skilled at Valorant means becoming skilled at outwitting opponents and constantly adapting to various situations. Valorant Match Tracker allows users to develop these skills by giving them insight into how they performed in past games. When users select their name and a specific match to view, a game-accurate map is loaded with the locations of their deaths and kill victims. The user can customize the map by selecting whether to display only kills, deaths, or kills/deaths with specific weapons. Using this information, anybody can visually recognize angles that they consistently win or lose fights at, areas of the map to avoid, and areas of their gameplay to improve.
+
+## Functionality
 
 * With this app, users will be able to:
     + Select a specific player or all players in the match to view their stats
@@ -14,6 +18,33 @@ This is a project created for the javascript_project portion of the App Academy 
     + Instructions for use
     + README.md file
     + A sample database provided by a user with access to Riot's restricted Valorant API
+
+## Wireframe
+
+* https://wireframe.cc/pro/pp/9c2c04d4a456458
+
+## Project Timeline
+
+* Monday 7/12/21
+    + Create HTML skeleton for the site
+    + Extract Data from sample API request for use
+
+* Tuesday 7/13/21
+    + Create Selectable list of Players
+    + Link each list item to a user in the sample data
+    + Include Kill and Death locations on the map depending on selected user
+
+* Wednesday 7/14/21
+    + Add weapon selection functionality
+    + Create an area for K/D/A and economy info
+
+* Thursday 7/15/21
+    + CSS
+
+## Technologies
+
+* HTML, CSS, Javascript, Riot Games Developer API*
+    + *Actual API is Inaccessible, so a file is included with sample data
 
 ## Future Implementations:
 
