@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     addTextToParent('.match-length', `${match.matchLength}`)
     addTextToParent('.match-length', ' mins')
     buildRoundSelector(data);
+    renderCorrectMap(match);
 
     const blueTeam = match.getPlayersByTeam('BLUE');
     const redTeam = match.getPlayersByTeam('RED');
@@ -46,8 +47,30 @@ function currentRound(i) {
     console.dir(round)
 }
 
-function renderRoundData(round) {
+function loadRoundData() {
 
+}
+
+function renderMap(url) {
+    let container = document.querySelector('.map');
+    let map = document.createElement('img');
+    map.setAttribute('src', '../assets/Ascent.png');
+    map.setAttribute('alt', '../assets/Ascent.png')
+    container.appendChild(map);
+}
+
+function renderCorrectMap(match) {
+    let url;
+    switch (match.map) {
+        case 'Ascent':
+            url = 'https://static.wikia.nocookie.net/valorant/images/0/04/Ascent_minimap.png/revision/latest?cb=20210713101708';
+            break;
+    }
+    renderMap(url)
+}
+
+function renderRoundData(round) {
+    
 }
 
 function renderKills(player) {

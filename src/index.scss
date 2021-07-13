@@ -1,11 +1,80 @@
+@font-face {
+    font-family: valorantFont;
+    src: url(../assets/VALORANT-Regular.woff);
+}
+
 body {
-    background-color: darkgrey;
+    background-color:rgb(30, 28, 46);
+}
+
+header {
+    position: relative;
+    text-align: center;
+    width: 500px;
+    margin: auto;
+    margin-top: 20px;
+    text-shadow: 2px 2px rgb(81, 71, 143);
+}
+
+header h1 {
+    font-size: 50px;
+    font-family: valorantFont;
+    color:white;
+}
+
+header h3 {
+    font-size: 20px;
+    font-family: fantasy, Copperplate;
+    font-weight: 100;
+    color: white;
+}
+
+main {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.teams {
+    width: 200px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.teams ul ul {
+    display: flex;
+    padding: 20px;
+    border: 1px solid white;
+    font-family:sans-serif;
+}
+
+.round-selector {
+    display: flex;
+    justify-content: center;
+}
+
+.round-selector li {
+    padding: 5px;
+    width: 20px;
+    text-align: center;
+    border: 1px solid white;
+    color: white;
+}
+
+.stats {
+    color: white;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;;
 }
 
 footer {
     background-color: white;
     height: 60px;
-    position: absolute;
+    position: sticky;
     bottom: 0;
     width: 100%;
 }
@@ -22,10 +91,12 @@ img {
     vertical-align: middle;
 }
 
-.teams li:hover {
+.teams ul ul:hover {
     cursor: pointer;
+    background-color:rgb(81, 71, 143);
 }
 
 .round-selector li:hover {
     cursor: pointer;
+    background-color: rgb(81, 71, 143)
 }
