@@ -8,7 +8,8 @@ let match = new Match(data);
 console.dir(match)
 let round = new Round(data, 1)
 console.dir(round);
-let stats = 'bsldfkja;l';
+let selectedPlayer;
+
 
 document.addEventListener("DOMContentLoaded", () => {
     addTextToParent('.map-name', `${match.map}`)
@@ -22,6 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const teamTwo = document.querySelector('.team-2');
     addPlayersToTeam(blueTeam, teamOne);
     addPlayersToTeam(redTeam, teamTwo);
+    selectedPlayer = blueTeam[0];
+    console.dir(selectedPlayer);
 });
 
 function buildRoundSelector(data) {
@@ -31,13 +34,24 @@ function buildRoundSelector(data) {
         let roundNumber = document.createTextNode(i.toString());
         listItem.appendChild(roundNumber);
         roundSelector.appendChild(listItem);
-        listItem.addEventListener('click', () => currentRound(i));
+        listItem.addEventListener('click', () => {
+            currentRound(i);
+        });
     }
 };
 
 function currentRound(i) {
     round = new Round(data, i - 1);
-    console.log(round.roundNum)
+    loadRoundData(round);
+    console.dir(round)
+}
+
+function renderRoundData(round) {
+
+}
+
+function renderKills(player) {
+
 }
 
 function getKeyByValue(object, value) {
@@ -59,10 +73,13 @@ function addPlayersToTeam(team, ul) {
         nameItem.appendChild(text);
         newPlayer.appendChild(nameItem);
         ul.appendChild(newPlayer);
-        newPlayer.addEventListener('click', sayHi)
+        newPlayer.addEventListener('click', () => {
+            setCurrentPlayer(player);
+        });
     });
 };
 
-function sayHi() {
-    console.log('hi');
+function setCurrentPlayer(player) {
+    selectedPlayer = player;
+    console.dir(selectedPlayer);
 }
