@@ -10,10 +10,12 @@ body {
 header {
     position: relative;
     text-align: center;
-    width: 500px;
+    width: 750px;
     margin: auto;
     margin-top: 20px;
+    padding-bottom: 20px;
     text-shadow: 2px 2px rgb(81, 71, 143);
+    border-bottom: 1px solid rgb(81, 71, 143);
 }
 
 header h1 {
@@ -29,25 +31,47 @@ header h3 {
     color: white;
 }
 
+.round-selector {
+    margin-top: 25px;
+}
+
 main {
     display: flex;
-    margin-top: 20px;
     justify-content: center;
 }
 
 .teams {
-    width: 200px;
+    width: 350px;
     color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
+.teams ul ul.team-labels {
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: rgb(25, 39, 53);
+}
+
+.teams li:first-child {
+    margin-right: 125px;
+}
+
+.teams > ul:first-child {
+    margin-bottom: 40px;
+}
+
 .teams ul ul {
     display: flex;
-    padding: 20px;
-    border: 1px solid white;
-    font-family:sans-serif;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgb(81, 71, 143);
+    border-left: 3px solid rgb(81, 71, 143);
+    background-image: linear-gradient(to right, rgba(33, 57, 80, 1), rgba(33, 57, 80, 0), rgba(33, 57, 80, 0), );
+    font-family: sans-serif;
 }
 
 .round-selector {
@@ -56,19 +80,43 @@ main {
 }
 
 .round-selector li {
-    padding: 5px;
+    padding: 10px;
     width: 20px;
     text-align: center;
-    border: 1px solid white;
+    border: 1px solid rgb(81, 71, 143);
     color: white;
 }
 
 .stats {
     color: white;
+    font-family:sans-serif;
     width: 200px;
     display: flex;
     flex-direction: column;
-    justify-content: center;;
+    justify-content: center;
+}
+
+.stats section {
+    border-bottom: 1px solid rgb(81, 71, 143);
+}
+
+.guns {
+    border-top: 1px solid rgb(81, 71, 143);
+}
+
+.gun-list {
+    text-align: center;
+}
+
+.gun-list li {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.info {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 footer {
@@ -96,7 +144,17 @@ img {
     background-color:rgb(81, 71, 143);
 }
 
+.teams ul ul.team-labels:hover {
+    cursor: default;
+    background-color: rgb(33, 57, 80);
+}
+
 .round-selector li:hover {
+    cursor: pointer;
+    background-color: rgb(81, 71, 143)
+}
+
+.guns li:hover {
     cursor: pointer;
     background-color: rgb(81, 71, 143)
 }
