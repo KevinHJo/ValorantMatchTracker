@@ -33,6 +33,7 @@ header h3 {
 
 .round-selector {
     margin-top: 25px;
+    margin-bottom: 25px;
 }
 
 main {
@@ -41,7 +42,7 @@ main {
 }
 
 .teams {
-    width: 350px;
+    width: 375px;
     color: white;
     display: flex;
     flex-direction: column;
@@ -55,8 +56,17 @@ main {
     background-color: rgb(25, 39, 53);
 }
 
+.teams ul ul.team-labels > li {
+    margin-top: 0px;
+}
+
+.teams img {
+    width: 50px;
+    padding: 0;
+}
+
 .teams li:first-child {
-    margin-right: 125px;
+    margin-right: 175px;
 }
 
 .teams > ul:first-child {
@@ -66,12 +76,18 @@ main {
 .teams ul ul {
     display: flex;
     padding-left: 20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     border-bottom: 1px solid rgb(81, 71, 143);
     border-left: 3px solid rgb(81, 71, 143);
     background-image: linear-gradient(to right, rgba(33, 57, 80, 1), rgba(33, 57, 80, 0), rgba(33, 57, 80, 0), );
     font-family: sans-serif;
+}
+
+.teams > ul > ul > li {
+    vertical-align: middle;
+    padding-left: 10px;
+    margin-top: 17px;
 }
 
 .round-selector {
