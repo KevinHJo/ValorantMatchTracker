@@ -1,13 +1,16 @@
 import {Data} from './data';
 import {Match} from './match';
 import {Round} from './round';
+import {Content} from './content';
 
 let data = new Data();
 // console.dir(data); // FOR DEVELOPMENT USE
+const content = new Content();
 let match = new Match(data);
 let round = new Round(data, 0)
 let selectedPlayer;
 let playerStats;
+let currentGun;
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -70,6 +73,18 @@ function renderCorrectMap(match) {
 
 function renderRoundData() {
     renderKills();
+    if (round.plantLocation.x) {
+        renderSpike();
+    }
+    renderGunList();
+    renderKda();
+}
+
+
+function renderKills() {
+    let locations = loadSelectedKills();
+    
+    console.dir(locations);
 }
 
 function loadSelectedKills() {
@@ -89,10 +104,40 @@ function loadSelectedKills() {
     return {'victims': victims, 'player': player}
 }
 
-function renderKills() {
-    let locations = loadSelectedKills();
+function renderSpike() {
+    let location = round.plantLocation;
+}
 
-    console.dir(locations);
+function renderGunList() {
+    let gunList = loadGunList();
+    console.dir(gunList);
+    let container = document.querySelector('.gun-list');
+    removeAllChildNodes(container);
+    gunList.forEach(gun => {
+        let listItem = document.createElement('li');
+        let gunName = document.createTextNode(`${gun.name}`);
+        listItem.appendChild(gunName);
+        container.appendChild(listItem);
+    });
+}
+
+function loadGunList() {
+    let equips = [];
+    playerStats.kills.forEach(kill => {
+        let weapon = content.findEquipById(kill.finishingDamage.damageItem)
+        if (!equips.includes(weapon)) {
+            equips.push(content.findEquipById(weapon.id)); 
+        }
+    });
+    return equips;
+}
+
+function renderKda() {
+    let stats = selectedPlayer.stats;
+    let info = document.querySelector('.info');
+    let text = document.createTextNode(`${stats.kills}/${stats.deaths}/${stats.assists}`)
+    removeAllChildNodes(info);
+    info.appendChild(text);
 }
 
 function addTextToParent(parentClass, child) {
@@ -119,4 +164,10 @@ function addPlayersToTeam(team, ul) {
 function setCurrentPlayer(player) {
     selectedPlayer = player;
     currentRound(round.roundNum + 1);
+}
+
+function removeAllChildNodes(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
 }
