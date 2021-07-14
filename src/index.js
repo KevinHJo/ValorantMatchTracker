@@ -77,7 +77,6 @@ function renderRoundData() {
         renderSpike();
     }
     renderGunList();
-    renderKda();
 }
 
 
@@ -210,6 +209,10 @@ function addAgentPortrait(parent, player) {
 function addKda(parent, player) {
     let stats = player.stats;
     let text = document.createTextNode(`${stats.kills}/${stats.deaths}/${stats.assists}`)
+    let li = document.createElement('li');
+    li.classList.add('kda')
+    li.appendChild(text)
+    parent.appendChild(li);
 }
 
 function addName(parent, player) {
