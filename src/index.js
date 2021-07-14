@@ -132,12 +132,92 @@ function loadGunList() {
     return equips;
 }
 
-function renderKda() {
-    let stats = selectedPlayer.stats;
-    let info = document.querySelector('.info');
+function addPlayersToTeam(team, ul) {
+    team.forEach(player => {
+        console.dir(player);
+        let newPlayer = document.createElement('ul');
+        addAgentPortrait(newPlayer, player);
+        addName(newPlayer, player);
+        addKda(newPlayer, player);
+        
+        ul.appendChild(newPlayer);
+
+        newPlayer.addEventListener('click', () => {
+            setCurrentPlayer(player);
+        });
+    });
+};
+
+function addAgentPortrait(parent, player) {
+    let agent = content.findAgentById(player.characterId)
+    let url;
+    switch (agent.name) {
+        case 'Astra':
+            url = '../assets/agents/Astra_icon.png';
+            break;
+        case 'Breach':
+            url = '../assets/agents/Breach_icon.png';
+            break;
+        case 'Brimstone':
+            url = '../assets/agents/Brimstone_icon.png';
+            break;
+        case 'Cypher':
+            url = '../assets/agents/Cypher_icon.png';
+            break;
+        case 'Jett':
+            url = '../assets/agents/Jett_icon.png';
+            break;
+        case 'KAYO':
+            url = '../assets/agents/KAYO_icon.png';
+            break;
+        case 'Killjoy':
+            url = '../assets/agents/Killjoy_icon.png';
+            break;
+        case 'Omen':
+            url = '../assets/agents/Omen_icon.png';
+            break;
+        case 'Phoenix':
+            url = '../assets/agents/Phoenix_icon.png';
+            break;
+        case 'Raze':
+            url = '../assets/agents/Raze_icon.png';
+            break;
+        case 'Reyna':
+            url = '../assets/agents/Reyna_icon.png';
+            break;
+        case 'Sage':
+            url = '../assets/agents/Sage_icon.png';
+            break;
+        case 'Skye':
+            url = '../assets/agents/Skye_icon.png';
+            break;
+        case 'Sova':
+            url = '../assets/agents/Sova_icon.png';
+            break;
+        case 'Viper':
+            url = '../assets/agents/Viper_icon.png';
+            break;
+        case 'Yoru':
+            url = '../assets/agents/Yoru_icon.png';
+            break;
+    }
+
+    let img = document.createElement('img');
+    img.setAttribute('src', url);
+    parent.appendChild(img);
+}
+
+function addKda(parent, player) {
+    let stats = player.stats;
     let text = document.createTextNode(`${stats.kills}/${stats.deaths}/${stats.assists}`)
-    removeAllChildNodes(info);
-    info.appendChild(text);
+}
+
+function addName(parent, player) {
+    let nameItem = document.createElement('li');
+    let name = data.findPlayerByPuuid(player.puuid)[0].gameName;
+    let text = document.createTextNode(name)
+    nameItem.appendChild(text);
+    parent.appendChild(nameItem);
 }
 
 function addTextToParent(parentClass, child) {
@@ -146,20 +226,7 @@ function addTextToParent(parentClass, child) {
     container.appendChild(text)
 };
 
-function addPlayersToTeam(team, ul) {
-    team.forEach(player => {
-        let newPlayer = document.createElement('ul');
-        let nameItem = document.createElement('li');
-        let name = data.findPlayerByPuuid(player.puuid)[0].gameName;
-        let text = document.createTextNode(name)
-        nameItem.appendChild(text);
-        newPlayer.appendChild(nameItem);
-        ul.appendChild(newPlayer);
-        newPlayer.addEventListener('click', () => {
-            setCurrentPlayer(player);
-        });
-    });
-};
+
 
 function setCurrentPlayer(player) {
     selectedPlayer = player;

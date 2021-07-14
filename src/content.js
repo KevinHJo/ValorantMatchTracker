@@ -5,9 +5,9 @@ export class Content {
         this.equips = this.data.equips;
     }
 
-    findCharacterById(id) {
+    findAgentById(id) {
         return this.characters.filter(character => {
-            return character.id === id;
+            return character.id === id.toUpperCase();
         })[0];
     }
 
