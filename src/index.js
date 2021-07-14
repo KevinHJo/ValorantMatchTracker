@@ -3,12 +3,11 @@ import {Match} from './match';
 import {Round} from './round';
 
 let data = new Data();
-console.dir(data); // FOR DEVELOPMENT USE
+// console.dir(data); // FOR DEVELOPMENT USE
 let match = new Match(data);
-console.dir(match)
-let round = new Round(data, 1)
-console.dir(round);
+let round = new Round(data, 0)
 let selectedPlayer;
+let playerStats;
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -24,8 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const teamTwo = document.querySelector('.team-2');
     addPlayersToTeam(blueTeam, teamOne);
     addPlayersToTeam(redTeam, teamTwo);
-    selectedPlayer = blueTeam[0];
-    console.dir(selectedPlayer);
 });
 
 function buildRoundSelector(data) {
@@ -45,16 +42,18 @@ function currentRound(i) {
     round = new Round(data, i - 1);
     loadRoundData(round);
     console.dir(round)
+    renderRoundData();
 }
 
-function loadRoundData() {
-
+function loadRoundData(round) {
+    playerStats = round.getPlayerStat(selectedPlayer.puuid)
+    console.dir(playerStats)
 }
 
 function renderMap(url) {
     let container = document.querySelector('.map');
     let map = document.createElement('img');
-    map.setAttribute('src', '../assets/Ascent.png');
+    map.setAttribute('src', url);
     map.setAttribute('alt', '../assets/Ascent.png')
     container.appendChild(map);
 }
@@ -63,23 +62,38 @@ function renderCorrectMap(match) {
     let url;
     switch (match.map) {
         case 'Ascent':
-            url = 'https://static.wikia.nocookie.net/valorant/images/0/04/Ascent_minimap.png/revision/latest?cb=20210713101708';
+            url = '../assets/Ascent.png';
             break;
     }
     renderMap(url)
 }
 
-function renderRoundData(round) {
-    
+function renderRoundData() {
+    renderKills();
 }
 
-function renderKills(player) {
+function loadSelectedKills() {
+    let kills = playerStats.kills;
+    let victims = [];
+    let player = [];
+    if (kills.length) {
+        kills.forEach( kill => {
+            victims.push(kill.victimLocation)
+            let currentPlayer = kill.playerLocations.filter(loc => {
+                return loc.puuid === selectedPlayer.puuid;
+            });
+            player.push(currentPlayer[0].location);
+        });
+    };
 
+    return {'victims': victims, 'player': player}
 }
 
-function getKeyByValue(object, value) {
-    return Object.keys(object).find(key => object[key] === value);
-};
+function renderKills() {
+    let locations = loadSelectedKills();
+
+    console.dir(locations);
+}
 
 function addTextToParent(parentClass, child) {
     let container = document.querySelector(parentClass)
@@ -104,5 +118,5 @@ function addPlayersToTeam(team, ul) {
 
 function setCurrentPlayer(player) {
     selectedPlayer = player;
-    console.dir(selectedPlayer);
+    currentRound(round.roundNum + 1);
 }
