@@ -16,4 +16,5 @@ export class Content {
             return character.id === id;
         })[0];
     }
+
 }

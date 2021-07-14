@@ -4,7 +4,7 @@ import {Round} from './round';
 import {Content} from './content';
 
 let data = new Data();
-// console.dir(data); // FOR DEVELOPMENT USE
+console.dir(data); // FOR DEVELOPMENT USE
 const content = new Content();
 let match = new Match(data);
 let round = new Round(data, 0)
@@ -44,13 +44,11 @@ function buildRoundSelector(data) {
 function currentRound(i) {
     round = new Round(data, i - 1);
     loadRoundData(round);
-    console.dir(round)
     renderRoundData();
 }
 
 function loadRoundData(round) {
     playerStats = round.getPlayerStat(selectedPlayer.puuid)
-    console.dir(playerStats)
 }
 
 function renderMap(url) {
@@ -82,8 +80,6 @@ function renderRoundData() {
 
 function renderKills() {
     let locations = loadSelectedKills();
-    
-    console.dir(locations);
 }
 
 function loadSelectedKills() {
@@ -109,7 +105,6 @@ function renderSpike() {
 
 function renderGunList() {
     let gunList = loadGunList();
-    console.dir(gunList);
     let container = document.querySelector('.gun-list');
     removeAllChildNodes(container);
     gunList.forEach(gun => {
@@ -133,7 +128,6 @@ function loadGunList() {
 
 function addPlayersToTeam(team, ul) {
     team.forEach(player => {
-        console.dir(player);
         let newPlayer = document.createElement('ul');
         addAgentPortrait(newPlayer, player);
         addName(newPlayer, player);

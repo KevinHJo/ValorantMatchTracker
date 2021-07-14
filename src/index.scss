@@ -114,6 +114,7 @@ main {
     border-left: 3px solid rgb(81, 71, 143);
     background-image: linear-gradient(to right, rgba(33, 57, 80, 1), rgba(33, 57, 80, 0), rgba(33, 57, 80, 0), );
     font-family: sans-serif;
+    position: relative;
 }
 
 .teams > ul > ul > li {
@@ -124,7 +125,7 @@ main {
 
 .kda {
     position: absolute;
-    left: 487px;
+    right: 50px;
 }
 
 .stats {
@@ -172,6 +173,11 @@ footer {
     justify-content: center;
     vertical-align: middle;
     padding: 5px;
+}
+
+.map img {
+    
+    transform: rotate(90deg)
 }
 
 img {
