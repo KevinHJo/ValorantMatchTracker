@@ -32,22 +32,34 @@ function buildRoundSelector(data) {
     const roundSelector = document.querySelector('.round-selector');
     for (let i=1; i <= data.game.roundResults.length; i++) {
         let listItem = document.createElement('li');
+        listItem.classList.add('round');
+        listItem.dataset.selected = false;
         let roundNumber = document.createTextNode(i.toString());
         listItem.appendChild(roundNumber);
         roundSelector.appendChild(listItem);
         listItem.addEventListener('click', () => {
-            currentRound(i);
+            currentRound(i, listItem);
         });
     }
 };
 
-function currentRound(i) {
+function currentRound(i, listItem) {
+    deselectAllRounds(listItem)
+    listItem.dataset.selected = true;
     round = new Round(data, i - 1);
     loadRoundData(round);
     renderRoundData();
     console.dir(selectedPlayer);
     console.dir(playerStats);
     console.dir(round);
+}
+
+function deselectAllRounds(round) {
+    round.parentNode.childNodes.forEach(child => {
+        if (child.nodeName != '#text') {
+            child.dataset.selected = false;
+        };
+    });
 }
 
 function loadRoundData(round) {
@@ -134,6 +146,8 @@ function loadGunList() {
 function addPlayersToTeam(team, ul) {
     team.forEach(player => {
         let newPlayer = document.createElement('ul');
+        newPlayer.classList.add('player');
+        newPlayer.dataset.selected = false;
         content.addAgentPortrait(newPlayer, player);
         addName(newPlayer, player);
         addKda(newPlayer, player);
@@ -141,7 +155,7 @@ function addPlayersToTeam(team, ul) {
         ul.appendChild(newPlayer);
 
         newPlayer.addEventListener('click', () => {
-            setCurrentPlayer(player);
+            setCurrentPlayer(newPlayer, player);
         });
     });
 };
@@ -171,7 +185,15 @@ function addTextToParent(parentClass, child) {
     container.appendChild(text)
 };
 
-function setCurrentPlayer(player) {
+function setCurrentPlayer(container, player) {
+    container.parentNode.parentNode.childNodes.forEach(child1 => {
+        child1.childNodes.forEach(child2 => {
+            if (child2.nodeName != '#text' && child2.className != 'team-labels') {
+                child2.dataset.selected = false;
+            };
+        });
+    });
+    container.dataset.selected = true;
     selectedPlayer = player;
     currentRound(round.roundNum + 1);
 }
