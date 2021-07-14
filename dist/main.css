@@ -57,6 +57,10 @@ header h3 {
   border-left: 1px solid #51478f;
 }
 
+.round-selector li[data-selected=true] {
+  background-color: #51478f;
+}
+
 main {
   display: flex;
   justify-content: center;
@@ -119,6 +123,10 @@ main {
   position: relative;
 }
 
+.teams ul ul[data-selected=true] {
+  background-color: #51478f;
+}
+
 .teams > ul > ul > li {
   vertical-align: middle;
   padding-left: 10px;
@@ -151,6 +159,7 @@ main {
   padding-top: 20px;
   padding-bottom: 20px;
   border-bottom: 1px solid #51478f;
+  background-image: linear-gradient(to top, #213950, rgba(33, 57, 80, 0), rgba(33, 57, 80, 0), rgba(33, 57, 80, 0));
 }
 
 .gun-list li:first-child {

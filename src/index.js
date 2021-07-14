@@ -4,7 +4,7 @@ import {Round} from './round';
 import {Content} from './content';
 
 let data = new Data();
-console.dir(data); // FOR DEVELOPMENT USE
+// console.dir(data); // FOR DEVELOPMENT USE
 const content = new Content();
 let match = new Match(data);
 let round = new Round(data, 0)
@@ -44,14 +44,16 @@ function buildRoundSelector(data) {
 };
 
 function currentRound(i, listItem) {
-    deselectAllRounds(listItem)
-    listItem.dataset.selected = true;
+    if (listItem) {
+        deselectAllRounds(listItem);
+        listItem.dataset.selected = true;
+    };
     round = new Round(data, i - 1);
     loadRoundData(round);
     renderRoundData();
-    console.dir(selectedPlayer);
-    console.dir(playerStats);
-    console.dir(round);
+    // console.dir(selectedPlayer);
+    // console.dir(playerStats);
+    // console.dir(round);
 }
 
 function deselectAllRounds(round) {
@@ -123,24 +125,37 @@ function renderGunList() {
     let container = document.querySelector('.gun-list');
     removeAllChildNodes(container);
     gunList.forEach(gun => {
-        console.dir(gun);
         let listItem = document.createElement('li');
+        listItem.classList = 'gun';
+        listItem.dataset.selected = false;
         content.addWeaponIcon(gun.name, listItem);
-        // let gunName = document.createTextNode(`${gun.name}`);
-        // listItem.appendChild(gunName);
         container.appendChild(listItem);
+        listItem.addEventListener('click', setCurrentGun);
     });
 }
 
 function loadGunList() {
     let equips = [];
+    console.dir(playerStats);
     playerStats.kills.forEach(kill => {
         let weapon = content.findEquipById(kill.finishingDamage.damageItem)
-        if (!equips.includes(weapon)) {
+        if (!equips.includes(weapon) && weapon) {
             equips.push(content.findEquipById(weapon.id)); 
         }
     });
     return equips;
+}
+
+function setCurrentGun(e) {
+    let gun = e.currentTarget;
+    deselectAllGuns(gun);
+    gun.dataset.selected = true;
+}
+
+function deselectAllGuns(gun) {
+    gun.parentNode.childNodes.forEach(gun => {
+        gun.dataset.selected = false;
+    });
 }
 
 function addPlayersToTeam(team, ul) {
