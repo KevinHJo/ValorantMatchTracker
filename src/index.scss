@@ -141,10 +141,6 @@ main {
     border-bottom: 1px solid rgb(81, 71, 143);
 }
 
-.guns {
-    border-top: 1px solid rgb(81, 71, 143);
-}
-
 .gun-list {
     text-align: center;
 }
@@ -152,6 +148,16 @@ main {
 .gun-list li {
     padding-top: 20px;
     padding-bottom: 20px;
+    border-bottom: 1px solid rgb(81, 71, 143);
+}
+
+.gun-list li:first-child {
+    border-top: 1px solid rgb(81, 71, 143);
+}
+
+.gun-list img {
+    width: 150px;
+    margin: auto;
 }
 
 .info {
@@ -200,7 +206,7 @@ img {
     background-color: rgb(81, 71, 143)
 }
 
-.guns li:hover {
+.gun-list li:hover {
     cursor: pointer;
     background-color: rgb(81, 71, 143)
 }

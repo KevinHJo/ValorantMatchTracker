@@ -45,6 +45,9 @@ function currentRound(i) {
     round = new Round(data, i - 1);
     loadRoundData(round);
     renderRoundData();
+    console.dir(selectedPlayer);
+    console.dir(playerStats);
+    console.dir(round);
 }
 
 function loadRoundData(round) {
@@ -108,9 +111,11 @@ function renderGunList() {
     let container = document.querySelector('.gun-list');
     removeAllChildNodes(container);
     gunList.forEach(gun => {
+        console.dir(gun);
         let listItem = document.createElement('li');
-        let gunName = document.createTextNode(`${gun.name}`);
-        listItem.appendChild(gunName);
+        content.addWeaponIcon(gun.name, listItem);
+        // let gunName = document.createTextNode(`${gun.name}`);
+        // listItem.appendChild(gunName);
         container.appendChild(listItem);
     });
 }
@@ -129,7 +134,7 @@ function loadGunList() {
 function addPlayersToTeam(team, ul) {
     team.forEach(player => {
         let newPlayer = document.createElement('ul');
-        addAgentPortrait(newPlayer, player);
+        content.addAgentPortrait(newPlayer, player);
         addName(newPlayer, player);
         addKda(newPlayer, player);
         
@@ -140,65 +145,6 @@ function addPlayersToTeam(team, ul) {
         });
     });
 };
-
-function addAgentPortrait(parent, player) {
-    let agent = content.findAgentById(player.characterId)
-    let url;
-    switch (agent.name) {
-        case 'Astra':
-            url = '../assets/agents/Astra_icon.png';
-            break;
-        case 'Breach':
-            url = '../assets/agents/Breach_icon.png';
-            break;
-        case 'Brimstone':
-            url = '../assets/agents/Brimstone_icon.png';
-            break;
-        case 'Cypher':
-            url = '../assets/agents/Cypher_icon.png';
-            break;
-        case 'Jett':
-            url = '../assets/agents/Jett_icon.png';
-            break;
-        case 'KAYO':
-            url = '../assets/agents/KAYO_icon.png';
-            break;
-        case 'Killjoy':
-            url = '../assets/agents/Killjoy_icon.png';
-            break;
-        case 'Omen':
-            url = '../assets/agents/Omen_icon.png';
-            break;
-        case 'Phoenix':
-            url = '../assets/agents/Phoenix_icon.png';
-            break;
-        case 'Raze':
-            url = '../assets/agents/Raze_icon.png';
-            break;
-        case 'Reyna':
-            url = '../assets/agents/Reyna_icon.png';
-            break;
-        case 'Sage':
-            url = '../assets/agents/Sage_icon.png';
-            break;
-        case 'Skye':
-            url = '../assets/agents/Skye_icon.png';
-            break;
-        case 'Sova':
-            url = '../assets/agents/Sova_icon.png';
-            break;
-        case 'Viper':
-            url = '../assets/agents/Viper_icon.png';
-            break;
-        case 'Yoru':
-            url = '../assets/agents/Yoru_icon.png';
-            break;
-    }
-
-    let img = document.createElement('img');
-    img.setAttribute('src', url);
-    parent.appendChild(img);
-}
 
 function addKda(parent, player) {
     let stats = player.stats;
@@ -217,13 +163,13 @@ function addName(parent, player) {
     parent.appendChild(nameItem);
 }
 
+
+
 function addTextToParent(parentClass, child) {
     let container = document.querySelector(parentClass)
     const text = document.createTextNode(child)
     container.appendChild(text)
 };
-
-
 
 function setCurrentPlayer(player) {
     selectedPlayer = player;
