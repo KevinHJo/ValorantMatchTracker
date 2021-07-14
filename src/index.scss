@@ -157,7 +157,7 @@ main {
     padding-top: 20px;
     padding-bottom: 20px;
     border-bottom: 1px solid rgb(81, 71, 143);
-    background-image: linear-gradient(to top, rgba(33, 57, 80, 1), rgba(33, 57, 80, 0), rgba(33, 57, 80, 0), rgba(33, 57, 80, 0), );
+    background-image: linear-gradient(to top, rgba(33, 57, 80, 1), rgba(33, 57, 80, 0), rgba(33, 57, 80, 0), rgba(33, 57, 80, 0));
 }
 
 .gun-list li:first-child {
@@ -167,6 +167,10 @@ main {
 .gun-list img {
     width: 150px;
     margin: auto;
+}
+
+.gun-list li[data-selected=true] {
+    background-image: linear-gradient(to right, rgba(81, 71, 143, 0), rgba(81, 71, 143, 1), rgba(81, 71, 143, 0));
 }
 
 .info {
@@ -190,12 +194,16 @@ footer {
     padding: 5px;
 }
 
-.map img {
-    
-    transform: rotate(90deg)
+.map {
+    display: flex;
+    position: relative;
 }
 
-img {
+.map img {
+    transform: rotate(90deg);
+}
+
+a img {
     padding: 10px;
     vertical-align: middle;
 }

@@ -52,7 +52,7 @@ function currentRound(i, listItem) {
     loadRoundData(round);
     renderRoundData();
     // console.dir(selectedPlayer);
-    // console.dir(playerStats);
+    console.dir(playerStats);
     // console.dir(round);
 }
 
@@ -97,6 +97,7 @@ function renderRoundData() {
 
 function renderKills() {
     let locations = loadSelectedKills();
+    console.dir(locations);
 }
 
 function loadSelectedKills() {
@@ -130,13 +131,14 @@ function renderGunList() {
         listItem.dataset.selected = false;
         content.addWeaponIcon(gun.name, listItem);
         container.appendChild(listItem);
-        listItem.addEventListener('click', setCurrentGun);
+        listItem.addEventListener('click', () => {
+            setCurrentGun(gun, listItem);
+        });
     });
 }
 
 function loadGunList() {
     let equips = [];
-    console.dir(playerStats);
     playerStats.kills.forEach(kill => {
         let weapon = content.findEquipById(kill.finishingDamage.damageItem)
         if (!equips.includes(weapon) && weapon) {
@@ -146,10 +148,11 @@ function loadGunList() {
     return equips;
 }
 
-function setCurrentGun(e) {
-    let gun = e.currentTarget;
-    deselectAllGuns(gun);
-    gun.dataset.selected = true;
+function setCurrentGun(gun, listItem) {
+    console.dir(gun);
+    console.log(listItem);
+    deselectAllGuns(listItem);
+    listItem.dataset.selected = true;
 }
 
 function deselectAllGuns(gun) {

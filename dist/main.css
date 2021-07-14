@@ -171,6 +171,10 @@ main {
   margin: auto;
 }
 
+.gun-list li[data-selected=true] {
+  background-image: linear-gradient(to right, rgba(81, 71, 143, 0), #51478f, rgba(81, 71, 143, 0));
+}
+
 .info {
   text-align: center;
   padding-top: 20px;
@@ -193,11 +197,16 @@ footer {
   padding: 5px;
 }
 
+.map {
+  display: flex;
+  position: relative;
+}
+
 .map img {
   transform: rotate(90deg);
 }
 
-img {
+a img {
   padding: 10px;
   vertical-align: middle;
 }
