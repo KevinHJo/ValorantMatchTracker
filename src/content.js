@@ -22,52 +22,52 @@ export class Content {
         let url;
         switch (agent.name) {
             case 'Astra':
-                url = '../assets/agents/Astra_icon.png';
+                url = './assets/agents/Astra_icon.png';
                 break;
             case 'Breach':
-                url = '../assets/agents/Breach_icon.png';
+                url = './assets/agents/Breach_icon.png';
                 break;
             case 'Brimstone':
-                url = '../assets/agents/Brimstone_icon.png';
+                url = './assets/agents/Brimstone_icon.png';
                 break;
             case 'Cypher':
-                url = '../assets/agents/Cypher_icon.png';
+                url = './assets/agents/Cypher_icon.png';
                 break;
             case 'Jett':
-                url = '../assets/agents/Jett_icon.png';
+                url = './assets/agents/Jett_icon.png';
                 break;
             case 'KAYO':
-                url = '../assets/agents/KAYO_icon.png';
+                url = './assets/agents/KAYO_icon.png';
                 break;
             case 'Killjoy':
-                url = '../assets/agents/Killjoy_icon.png';
+                url = './assets/agents/Killjoy_icon.png';
                 break;
             case 'Omen':
-                url = '../assets/agents/Omen_icon.png';
+                url = './assets/agents/Omen_icon.png';
                 break;
             case 'Phoenix':
-                url = '../assets/agents/Phoenix_icon.png';
+                url = './assets/agents/Phoenix_icon.png';
                 break;
             case 'Raze':
-                url = '../assets/agents/Raze_icon.png';
+                url = './assets/agents/Raze_icon.png';
                 break;
             case 'Reyna':
-                url = '../assets/agents/Reyna_icon.png';
+                url = './assets/agents/Reyna_icon.png';
                 break;
             case 'Sage':
-                url = '../assets/agents/Sage_icon.png';
+                url = './assets/agents/Sage_icon.png';
                 break;
             case 'Skye':
-                url = '../assets/agents/Skye_icon.png';
+                url = './assets/agents/Skye_icon.png';
                 break;
             case 'Sova':
-                url = '../assets/agents/Sova_icon.png';
+                url = './assets/agents/Sova_icon.png';
                 break;
             case 'Viper':
-                url = '../assets/agents/Viper_icon.png';
+                url = './assets/agents/Viper_icon.png';
                 break;
             case 'Yoru':
-                url = '../assets/agents/Yoru_icon.png';
+                url = './assets/agents/Yoru_icon.png';
                 break;
         }
     
