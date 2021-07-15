@@ -97,6 +97,7 @@ function renderRoundData() {
 }
 
 function renderRoundSelectedGun() {
+    
     renderKills();
     renderVictims();
     if (round.plantLocation.x) {
@@ -108,13 +109,15 @@ function renderRoundSelectedGun() {
 function renderKills() {
     let locations = loadSelectedKills().player;
     let container = document.querySelector('.map');
+    removeAllChildNodes(container);
+    renderCorrectMap(match);
     console.dir(locations);
     locations.forEach(loc => {
         let mark = document.createElement('img')
         mark.classList.add('marker');
         mark.setAttribute('src', '../assets/kill_mark.png')
         // mark.style.left = '100px';
-        mark.style.bottom = `${280 - (loc.x / 4500) * 1026}px`;
+        mark.style.bottom = `${((loc.y - 4571)/16038) * -1026}px`;
         container.appendChild(mark);
     });
 }
