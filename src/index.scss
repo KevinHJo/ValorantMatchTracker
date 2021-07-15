@@ -252,12 +252,16 @@ footer {
     animation: createMarker 1s;
     width: 30px;
     left: 415px;
+    -webkit-filter: drop-shadow(2px 2px 2px black);
+    filter: drop-shadow(2px 2px 2px black);
 }
 
 .spike {
     position: absolute;
     animation: createMarker 1s;
     width: 40px;
+    -webkit-filter: drop-shadow(2px 2px 2px black);
+    filter: drop-shadow(2px 2px 2px black);
 }
 
 @keyframes createMarker {
