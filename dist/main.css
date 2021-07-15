@@ -34,6 +34,34 @@ header h3 {
   color: white;
 }
 
+header .about {
+  position: absolute;
+  width: 200px;
+  left: 1000px;
+  top: 20px;
+  cursor: pointer;
+}
+
+header .about p {
+  display: none;
+}
+
+header .about h3 {
+  background-color: darkgrey;
+  width: 100px;
+  padding: 7px 5px;
+  border-radius: 5px;
+}
+
+header .about:hover p {
+  display: block;
+  margin: 5px;
+  padding: 5px;
+  background-color: white;
+  text-shadow: 0px 0px white;
+  text-align: left;
+}
+
 .round-selector {
   margin-top: 25px;
   margin-bottom: 25px;
@@ -208,7 +236,7 @@ footer {
   position: relative;
 }
 
-.map img {
+.map .map-img {
   transform: rotate(90deg);
 }
 
@@ -217,6 +245,12 @@ footer {
   animation: createMarker 1s;
   width: 30px;
   left: 415px;
+}
+
+.spike {
+  position: absolute;
+  animation: createMarker 1s;
+  width: 40px;
 }
 
 @keyframes createMarker {

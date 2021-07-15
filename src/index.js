@@ -2,6 +2,7 @@ import {Data} from './data';
 import {Match} from './match';
 import {Round} from './round';
 import {Content} from './content';
+import { mark } from 'regenerator-runtime';
 
 let data = new Data();
 // console.dir(data); // FOR DEVELOPMENT USE
@@ -73,6 +74,7 @@ function renderMap(url) {
     let container = document.querySelector('.map');
     let map = document.createElement('img');
     map.setAttribute('src', url);
+    map.classList.add('map-img');
     map.setAttribute('alt', './assets/Ascent.png')
     container.appendChild(map);
 }
@@ -92,17 +94,17 @@ function renderRoundData() {
     renderVictims();
     if (round.plantLocation.x) {
         // console.dir(round.plantLocation);
-        renderSpike();
+        renderSpike(round.plantLocation);
     }
     renderGunList();
 }
 
 function renderRoundSelectedGun() {
-    
     renderKills();
     renderVictims();
-    if (round.plantLocation.x) {
-        renderSpike();
+    console.dir(round.plantLocation);
+    if (round.plantLocation.x || round.plantLocation.y) {
+        renderSpike(round.plantLocation);
     }
 }
 
@@ -112,7 +114,7 @@ function renderKills() {
     let container = document.querySelector('.map');
     removeAllChildNodes(container);
     renderCorrectMap(match);
-    console.dir(locations);
+    // console.dir(locations);
     locations.forEach(loc => {
         let mark = document.createElement('img')
         mark.classList.add('marker');
@@ -124,17 +126,17 @@ function renderKills() {
 }
 
 function findXCoord(x) {
-    return ((6300 + x) / 14848) * 1024;
+    return ((6200 + x) / 14848) * 1024;
 }
 
 function findYCoord(y) {
-    return ((3000 - y) / 14848) * 1024;
+    return ((2800 - y) / 14848) * 1024;
 }
 
 function renderVictims() {
     let locations = loadSelectedKills().victims;
     let container = document.querySelector('.map');
-    console.dir(locations);
+    // console.dir(locations);
     locations.forEach(loc => {
         let mark = document.createElement('img')
         mark.classList.add('marker');
@@ -164,8 +166,15 @@ function loadSelectedKills() {
     return {'victims': victims, 'player': player}
 }
 
-function renderSpike() {
-    let location = round.plantLocation;
+function renderSpike(location) {
+    let container = document.querySelector('.map')
+    let spike = document.createElement('img');
+    spike.setAttribute('src', './assets/spike.png')
+    spike.classList.add('spike');
+    spike.style.left = `${findXCoord(location.x)}px`;
+    spike.style.bottom = `${findYCoord(location.y)}px`;
+    container.appendChild(spike);
+
 }
 
 function renderGunList() {
