@@ -7,6 +7,7 @@
 }
 body {
   background-color: #151420;
+  position: relative;
 }
 
 header {
@@ -172,7 +173,7 @@ main {
 }
 
 .gun-list li[data-selected=true] {
-  background-image: linear-gradient(to right, rgba(81, 71, 143, 0), #51478f, rgba(81, 71, 143, 0));
+  background-image: linear-gradient(to right, rgba(81, 71, 143, 0), rgba(81, 71, 143, 0.5), rgba(81, 71, 143, 0));
 }
 
 .info {
@@ -206,6 +207,12 @@ footer {
   transform: rotate(90deg);
 }
 
+.marker {
+  position: absolute;
+  width: 20px;
+  left: 415px;
+}
+
 a img {
   padding: 10px;
   vertical-align: middle;
@@ -229,4 +236,8 @@ a img {
 .gun-list li:hover {
   cursor: pointer;
   background-color: #51478f;
+}
+
+.map img {
+  border: 1px solid pink;
 }

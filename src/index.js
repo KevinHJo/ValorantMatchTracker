@@ -33,7 +33,11 @@ function buildRoundSelector(data) {
     for (let i=1; i <= data.game.roundResults.length; i++) {
         let listItem = document.createElement('li');
         listItem.classList.add('round');
-        listItem.dataset.selected = false;
+        if (i === 1) {
+            listItem.dataset.selected = true;
+        }else{
+            listItem.dataset.selected = false;
+        }
         let roundNumber = document.createTextNode(i.toString());
         listItem.appendChild(roundNumber);
         roundSelector.appendChild(listItem);
@@ -51,9 +55,6 @@ function currentRound(i, listItem) {
     round = new Round(data, i - 1);
     loadRoundData(round);
     renderRoundData();
-    // console.dir(selectedPlayer);
-    console.dir(playerStats);
-    // console.dir(round);
 }
 
 function deselectAllRounds(round) {
@@ -88,15 +89,38 @@ function renderCorrectMap(match) {
 
 function renderRoundData() {
     renderKills();
+    renderVictims();
     if (round.plantLocation.x) {
         renderSpike();
     }
     renderGunList();
 }
 
+function renderRoundSelectedGun() {
+    renderKills();
+    renderVictims();
+    if (round.plantLocation.x) {
+        renderSpike();
+    }
+}
+
 
 function renderKills() {
-    let locations = loadSelectedKills();
+    let locations = loadSelectedKills().player;
+    let container = document.querySelector('.map');
+    console.dir(locations);
+    locations.forEach(loc => {
+        let mark = document.createElement('img')
+        mark.classList.add('marker');
+        mark.setAttribute('src', '../assets/kill_mark.png')
+        // mark.style.left = '100px';
+        mark.style.bottom = `${280 - (loc.x / 4500) * 1026}px`;
+        container.appendChild(mark);
+    });
+}
+
+function renderVictims() {
+    let locations = loadSelectedKills().victims;
     console.dir(locations);
 }
 
@@ -106,11 +130,13 @@ function loadSelectedKills() {
     let player = [];
     if (kills.length) {
         kills.forEach( kill => {
-            victims.push(kill.victimLocation)
-            let currentPlayer = kill.playerLocations.filter(loc => {
-                return loc.puuid === selectedPlayer.puuid;
-            });
-            player.push(currentPlayer[0].location);
+            if (currentGun && kill.finishingDamage.damageItem === currentGun.id) {
+                victims.push(kill.victimLocation)
+                let currentPlayer = kill.playerLocations.filter(loc => {
+                    return loc.puuid === selectedPlayer.puuid;
+                });
+                player.push(currentPlayer[0].location);
+            }
         });
     };
 
@@ -149,10 +175,10 @@ function loadGunList() {
 }
 
 function setCurrentGun(gun, listItem) {
-    console.dir(gun);
-    console.log(listItem);
     deselectAllGuns(listItem);
     listItem.dataset.selected = true;
+    currentGun = gun;
+    renderRoundSelectedGun();
 }
 
 function deselectAllGuns(gun) {
@@ -194,8 +220,6 @@ function addName(parent, player) {
     nameItem.appendChild(text);
     parent.appendChild(nameItem);
 }
-
-
 
 function addTextToParent(parentClass, child) {
     let container = document.querySelector(parentClass)
