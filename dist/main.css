@@ -198,6 +198,11 @@ footer {
   padding: 5px;
 }
 
+.main-map {
+  width: 1024px;
+  height: 1024px;
+}
+
 .map {
   display: flex;
   position: relative;
@@ -209,10 +214,22 @@ footer {
 
 .marker {
   position: absolute;
-  width: 20px;
+  animation: createMarker 1s;
+  width: 30px;
   left: 415px;
 }
 
+@keyframes createMarker {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 a img {
   padding: 10px;
   vertical-align: middle;
@@ -236,8 +253,4 @@ a img {
 .gun-list li:hover {
   cursor: pointer;
   background-color: #51478f;
-}
-
-.map img {
-  border: 1px solid pink;
 }

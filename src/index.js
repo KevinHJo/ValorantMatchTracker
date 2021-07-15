@@ -91,6 +91,7 @@ function renderRoundData() {
     renderKills();
     renderVictims();
     if (round.plantLocation.x) {
+        // console.dir(round.plantLocation);
         renderSpike();
     }
     renderGunList();
@@ -115,16 +116,33 @@ function renderKills() {
     locations.forEach(loc => {
         let mark = document.createElement('img')
         mark.classList.add('marker');
-        mark.setAttribute('src', '../assets/kill_mark.png')
-        // mark.style.left = '100px';
-        mark.style.bottom = `${((loc.y - 4571)/16038) * -1026}px`;
+        mark.setAttribute('src', './assets/player-mark.png')
+        mark.style.left = `${findXCoord(loc.x)}px`;
+        mark.style.bottom = `${findYCoord(loc.y)}px`;
         container.appendChild(mark);
     });
 }
 
+function findXCoord(x) {
+    return ((6300 + x) / 14848) * 1024;
+}
+
+function findYCoord(y) {
+    return ((3000 - y) / 14848) * 1024;
+}
+
 function renderVictims() {
     let locations = loadSelectedKills().victims;
+    let container = document.querySelector('.map');
     console.dir(locations);
+    locations.forEach(loc => {
+        let mark = document.createElement('img')
+        mark.classList.add('marker');
+        mark.setAttribute('src', './assets/kill_mark.png')
+        mark.style.left = `${findXCoord(loc.x)}px`;
+        mark.style.bottom = `${findYCoord(loc.y)}px`;
+        container.appendChild(mark);
+    });
 }
 
 function loadSelectedKills() {
