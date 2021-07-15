@@ -80,61 +80,61 @@ export class Content {
         let url;
         switch (name) {
             case 'Ares':
-                url = '../assets/weapons/Ares_icon.png';
+                url = './assets/weapons/Ares_icon.png';
                 break;
             case 'Bucky':
-                url = '../assets/weapons/Bucky_icon.png';
+                url = './assets/weapons/Bucky_icon.png';
                 break;
             case 'Bulldog':
-                url = '../assets/weapons/Bulldog_icon.png';
+                url = './assets/weapons/Bulldog_icon.png';
                 break;
             case 'Classic':
-                url = '../assets/weapons/Classic_icon.png';
+                url = './assets/weapons/Classic_icon.png';
                 break;
             case 'Frenzy':
-                url = '../assets/weapons/Frenzy_icon.png';
+                url = './assets/weapons/Frenzy_icon.png';
                 break;
             case 'Ghost':
-                url = '../assets/weapons/Ghost_icon.png';
+                url = './assets/weapons/Ghost_icon.png';
                 break;
             case 'Golden Gun':
-                url = '../assets/weapons/Golden Gun_icon.png';
+                url = './assets/weapons/Golden Gun_icon.png';
                 break;
             case 'Guardian':
-                url = '../assets/weapons/Guardian_icon.png';
+                url = './assets/weapons/Guardian_icon.png';
                 break;
             case 'Judge':
-                url = '../assets/weapons/Judge_icon.png';
+                url = './assets/weapons/Judge_icon.png';
                 break;
             case 'Knife':
-                url = '../assets/weapons/Knife_icon.png';
+                url = './assets/weapons/Knife_icon.png';
                 break;
             case 'Marshal':
-                url = '../assets/weapons/Marshal_icon.png';
+                url = './assets/weapons/Marshal_icon.png';
                 break;
             case 'Odin':
-                url = '../assets/weapons/Odin_icon.png';
+                url = './assets/weapons/Odin_icon.png';
                 break;
             case 'Operator':
-                url = '../assets/weapons/Operator_icon.png';
+                url = './assets/weapons/Operator_icon.png';
                 break;
             case 'Phantom':
-                url = '../assets/weapons/Phantom_icon.png';
+                url = './assets/weapons/Phantom_icon.png';
                 break;
             case 'Sheriff':
-                url = '../assets/weapons/Sheriff_icon.png';
+                url = './assets/weapons/Sheriff_icon.png';
                 break;
             case 'Shorty':
-                url = '../assets/weapons/Shorty_icon.png';
+                url = './assets/weapons/Shorty_icon.png';
                 break;
             case 'Spectre':
-                url = '../assets/weapons/Spectre_icon.png';
+                url = './assets/weapons/Spectre_icon.png';
                 break;
             case 'Stinger':
-                url = '../assets/weapons/Stinger_icon.png';
+                url = './assets/weapons/Stinger_icon.png';
                 break;
             case 'Vandal':
-                url = '../assets/weapons/Vandal_icon.png';
+                url = './assets/weapons/Vandal_icon.png';
                 break;
         };
 

@@ -73,7 +73,7 @@ function renderMap(url) {
     let container = document.querySelector('.map');
     let map = document.createElement('img');
     map.setAttribute('src', url);
-    map.setAttribute('alt', '../assets/Ascent.png')
+    map.setAttribute('alt', './assets/Ascent.png')
     container.appendChild(map);
 }
 
@@ -81,7 +81,7 @@ function renderCorrectMap(match) {
     let url;
     switch (match.map) {
         case 'Ascent':
-            url = '../assets/Ascent.png';
+            url = './assets/Ascent.png';
             break;
     }
     renderMap(url)
