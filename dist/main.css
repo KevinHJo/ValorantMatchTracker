@@ -5,6 +5,11 @@
   font-family: valorantFont;
   src: url(../assets/VALORANT-Regular.woff);
 }
+
+html {
+  height: 100%;
+}
+
 body {
   background-color: #151420;
   position: relative;
@@ -222,7 +227,7 @@ main {
 footer {
   background-color: white;
   height: 60px;
-  position: sticky;
+  position: fixed;
   bottom: 0;
   width: 100%;
 }

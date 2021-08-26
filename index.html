@@ -1,72 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="stylesheet" href="./src/reset.css" />
+        <link rel="stylesheet" href="./dist/main.css" />
+        <script src="./dist/main.js"></script>
+        <title>Valorant Match Tracker</title>
+    </head>
+    <div class='page'>
+        <body>
+            <header>
+                <div class="about">
+                    <h3>About</h3>
+                    <p>Welcome to Valorant Match Tracker! Please select a player, round, and weapon to view corresponding kill and death locations.</p>
+                </div>
+                <div class="match-info">
+                    <h1 class="map-name"></h1>
+                    <section class="match-stats">
+                        <h3 class="results"></h3>
+                        <h3 class="match-length"></h3>
+                    </section>
+                </div>
+            </header>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="./src/reset.css" />
-    <link rel="stylesheet" href="./dist/main.css" />
-    <script src="./dist/main.js"></script>
-    <title>Valorant Match Tracker</title>
-</head>
-
-<body>
-    <header>
-        <div class="about">
-            <h3>About</h3>
-            <p>Welcome to Valorant Match Tracker! Please select a player, round, and weapon to view corresponding kill and death locations.</p>
-        </div>
-        <div class="match-info">
-            <h1 class="map-name"></h1>
-            <section class="match-stats">
-                <h3 class="results"></h3>
-                <h3 class="match-length"></h3>
-            </section>
-        </div>
+            <ul class="round-selector"></ul>
         
-    </header>
-
-    <ul class="round-selector"></ul>
-
-    <main>
-        <div class="teams">
-            <ul class="team-1">
-                <ul class="team-labels">
-                    <li class="team">Team 1</li>
-                    <li class="score">K/D/A</li>
-                </ul>
-            </ul>
-            <ul class="team-2">
-                <ul class="team-labels">
-                    <li class="team">Team 2</li>
-                    <li class="score">K/D/A</li>
-                </ul>
-            </ul>
-        </div>
+            <main>
+                <div class="teams">
+                    <ul class="team-1">
+                        <ul class="team-labels">
+                            <li class="team">Team 1</li>
+                            <li class="score">K/D/A</li>
+                        </ul>
+                    </ul>
+                    <ul class="team-2">
+                        <ul class="team-labels">
+                            <li class="team">Team 2</li>
+                            <li class="score">K/D/A</li>
+                        </ul>
+                    </ul>
+                </div>
+                
+                <div class="main-map">
+                    
+                    <section class="map"></section>
+                </div>
         
-        <div class="main-map">
+                <div class="stats">
+                    <ul class="gun-list"></ul>
+                </div>
+            </main>
             
-            <section class="map"></section>
-        </div>
-
-        <div class="stats">
-            <ul class="gun-list"></ul>
-        </div>
-    </main>
-    
-    <footer>
-        <nav class="dev-nav">
-            <a href="https://github.com/KevinHJo/ValorantMatchTracker" target="_blank" rel="noreferrer noopener">
-                <img src="https://image.flaticon.com/icons/png/512/38/38401.png" alt="./assets/github-logo.png">
-            </a>
-    
-            <a href="https://www.linkedin.com/in/kevin-jo-379bb5150/" target="_blank" rel="noreferrer noopener">
-                <img src="https://www.edigitalagency.com.au/wp-content/uploads/Linkedin-logo-icon-png.png" alt="./assets/Linkedin-logo.png">
-            </a>
-        </nav>
-    </footer>
-</body>
-
-
+            <footer>
+                <nav class="dev-nav">
+                    <a href="https://github.com/KevinHJo/ValorantMatchTracker" target="_blank" rel="noreferrer noopener">
+                        <img src="https://image.flaticon.com/icons/png/512/38/38401.png" alt="./assets/github-logo.png">
+                    </a>
+            
+                    <a href="https://www.linkedin.com/in/kevin-jo-379bb5150/" target="_blank" rel="noreferrer noopener">
+                        <img src="https://www.edigitalagency.com.au/wp-content/uploads/Linkedin-logo-icon-png.png" alt="./assets/Linkedin-logo.png">
+                    </a>
+                </nav>
+            </footer>
+        </body>
+        
+    </div>
 </html>
